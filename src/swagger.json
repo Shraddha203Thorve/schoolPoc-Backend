@@ -1,0 +1,122 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "TypeScript-NodeJS-Express-REST-API School Server",
+        "description": "API for school-App by minimal way using swagger",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "servers": [
+        {
+            "url": "http://localhost:4000/api/admission"
+        }
+    ],
+    "tags": [
+        {
+            "name": "Admission",
+            "description": "API for admission in the system"
+        }
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/add": {
+            "post": {
+                "tags": [
+                    "post grades"
+                ],
+                "summary": "post grades in system",
+                "requestBody": {
+                    "description": "grades Object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "http://localhost:4000/api/admission"
+                        }
+                    }
+                }
+            }
+        },
+        "/": {
+            "get": {
+                "tags": [
+                    "All grades"
+                ],
+                "summary": "Get all grades in system",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "http://localhost:4000/api/admission"
+                        },
+                        "400": {
+                            "description": "Failed. Bad post data."
+                        }
+                    }
+                }
+            }
+        },
+        "/{category}": {
+            "parameters": [
+                {
+                    "name": "category",
+                    "in": "path",
+                    "required": true,
+                    "description": "category of admission",
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Grades by category"
+                ],
+                "summary": "Get all grades in system",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "http://localhost:4000/api/admission/"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Cat": {
+            "type": "object",
+            "properties": {
+                "genus": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "isHungry": {
+                    "type": "boolean"
+                },
+                "lastFedDate": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
